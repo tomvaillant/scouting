@@ -1,36 +1,49 @@
-name: Daily News Analysis
+name: Daily News Scouting
 
 permissions:
   contents: write
   
-# Run at 6AM CET/CEST every day
-# 6AM CET (winter) = 5AM UTC
-# 6AM CEST (summer) = 4AM UTC
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 5 * * *'  # Every day at 5AM UTC (6AM CET)
+    - cron: '0 5 * * *'  # 5 AM UTC daily
 
 jobs:
-  daily-news:
+  daily-scouting:
     runs-on: ubuntu-latest
+    
+    # Set environment variables from GitHub secrets
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      ZAPIER_WEBHOOK_URL: ${{ secrets.ZAPIER_WEBHOOK_URL }}
+    
     steps:
-    - name: Check out this repo
-      uses: actions/checkout@v2
+    - name: Check out repository
+      uses: actions/checkout@v4  # Updated to v4
+    
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4  # Updated to v4
       with:
         python-version: '3.10'
-    - name: Install all necessary packages
-      run: pip install jupyter feedparser pandas requests anthropic python-dotenv
-    - name: Scraping today's data
-      run: jupyter nbconvert --to notebook --execute "news_scouting.ipynb" --stdout
     
-    - name: Commit and push any changes
-      run: |-
-        git config user.name "Automated"
+    - name: Install dependencies
+      run: |
+        pip install --upgrade pip
+        pip install jupyter nbconvert feedparser pandas requests anthropic python-dotenv
+    
+    - name: Run news scouting notebook
+      run: |
+        # Execute notebook and save output
+        jupyter nbconvert --to notebook --execute "news_scouting.ipynb" --output "news_scouting_executed.ipynb"
+        
+        # Also create an HTML version for debugging if needed
+        jupyter nbconvert --to html "news_scouting_executed.ipynb"
+    
+    - name: Commit results
+      run: |
+        git config user.name "GitHub Actions Bot"
         git config user.email "actions@users.noreply.github.com"
         git add -A
-        timestamp=$(date -u)
-        git commit -m "Daily news analysis: ${timestamp}" || exit 0
+        timestamp=$(date -u +'%Y-%m-%d %H:%M:%S UTC')
+        git commit -m "Daily scouting run: ${timestamp}" || echo "No changes to commit"
         git push
