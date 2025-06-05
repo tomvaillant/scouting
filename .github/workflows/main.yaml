@@ -16,20 +16,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Check out this repo
-      uses: actions/checkout@v4
-    
+      uses: actions/checkout@v2
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v2
       with:
         python-version: '3.10'
-    
     - name: Install all necessary packages
-      run: pip install jupyter nbconvert feedparser pandas requests anthropic python-dotenv
-    
-    - name: Run news analysis notebook
-      env:
-        ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        ZAPIER_WEBHOOK_URL: ${{ secrets.ZAPIER_WEBHOOK_URL }}
+      run: pip install jupyter feedparser pandas requests anthropic python-dotenv
+    - name: Scraping today's data
       run: jupyter nbconvert --to notebook --execute "news_scouting.ipynb" --stdout
     
     - name: Commit and push any changes
