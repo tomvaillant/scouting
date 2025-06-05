@@ -1,0 +1,42 @@
+name: Daily News Analysis
+
+permissions:
+  contents: write
+  
+# Run at 6AM CET/CEST every day
+# 6AM CET (winter) = 5AM UTC
+# 6AM CEST (summer) = 4AM UTC
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 5 * * *'  # Every day at 5AM UTC (6AM CET)
+
+jobs:
+  daily-news:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out this repo
+      uses: actions/checkout@v2
+    
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.10'
+    
+    - name: Install all necessary packages
+      run: pip install jupyter feedparser pandas requests anthropic
+    
+    - name: Run news analysis notebook
+      env:
+        ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        ZAPIER_WEBHOOK_URL: ${{ secrets.ZAPIER_WEBHOOK_URL }}
+      run: jupyter nbconvert --to notebook --execute "your_notebook_name.ipynb" --stdout
+    
+    - name: Commit and push any changes
+      run: |-
+        git config user.name "Automated"
+        git config user.email "actions@users.noreply.github.com"
+        git add -A
+        timestamp=$(date -u)
+        git commit -m "Daily news analysis: ${timestamp}" || exit 0
+        git push
