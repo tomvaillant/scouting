@@ -30,7 +30,7 @@ jobs:
       env:
         ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         ZAPIER_WEBHOOK_URL: ${{ secrets.ZAPIER_WEBHOOK_URL }}
-      run: jupyter nbconvert --to notebook --execute "your_notebook_name.ipynb" --stdout
+      run: jupyter nbconvert --to notebook --execute "news_scouting.ipynb" --stdout
     
     - name: Commit and push any changes
       run: |-
