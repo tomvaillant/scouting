@@ -15,9 +15,15 @@
 <h2>{{ section.title }}</h2>
 
 {% for story in section.stories %}
-<p><strong>{{ story.number }} {{ story.source }}:</strong> {{ story.title }}</p>
+<p><strong>{{ story.number }} {{ story.source }}:</strong> 
+{% if story.url %}
+<a href="{{ story.url }}" style="color: black; text-decoration: none;">{{ story.title }}</a>
+{% else %}
+{{ story.title }}
+{% endif %}
+</p>
 {% for detail in story.details %}
-<p style="margin-left: 20px;">• <strong>{{ detail.label }}:</strong>{{ detail.value }}</p>
+<p style="margin-left: 20px;">• <strong>{{ detail.label }}:</strong> {{ detail.value }}</p>
 {% endfor %}
 {% endfor %}
 {% endfor %}
@@ -28,8 +34,9 @@
 <p style="margin-left: 20px;">
 • Scannen von RSS-Feeds großer Nachrichtenportale aller Kontinente<br>
 • Sammeln der neuesten {{ stats.total_articles }} Artikel von {{ stats.total_sources }} Quellen<br>
-• Verwendung von Claude AI zur Identifikation narrativ starker Stories mit Tiefe<br>
-• Fokus auf: Dramatische Entwicklungen, überzeugende Kontraste, versteckte Verbindungen, menschliches Drama
+• Verwendung von Claude AI als Senior Story Editor für 20min.ch<br>
+• Fokus auf: Emotionale Resonanz, narrative Kraft, Schweizer Relevanz und universelle Emotionen<br>
+• Identifikation von Einzelschicksalen, Kuriositäten, menschlichem Drama und visuell starken Stories
 </p>
 
 <h3>QUELLENVERTEILUNG</h3>

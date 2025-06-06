@@ -16,16 +16,21 @@
     </div>
     
     <div style="margin: 20px 0;">
-        <h3>Heutige Empfehlungen (mit narrativer Tiefe):</h3>
+        <h3>Heutige Empfehlungen (emotionale Resonanz & narrative Kraft):</h3>
         
         {% for section in sections %}
         <h4>{{ section.icon }} {{ section.title }}:</h4>
         
         {% for story in section.stories %}
         <div style="margin: 15px 0; padding: 10px; background-color: #f9f9f9; border-radius: 5px;">
-            <strong>{{ story.source }}</strong>: {{ story.title }}
+            <strong>{{ story.source }}</strong>: 
+            {% if story.url %}
+            <a href="{{ story.url }}" style="color: black; text-decoration: none;">{{ story.title }}</a>
+            {% else %}
+            {{ story.title }}
+            {% endif %}
             {% for detail in story.details %}
-            <br><span style="color: #666; font-size: 14px;">• <strong>{{ detail.label }}:</strong>{{ detail.value }}</span>
+            <br><span style="color: #666; font-size: 14px;">• <strong>{{ detail.label }}:</strong> {{ detail.value }}</span>
             {% endfor %}
         </div>
         {% endfor %}
@@ -33,15 +38,15 @@
     </div>
     
     <p style="margin-top: 30px;">
-        <em>💡 Die vollständige Analyse konzentriert sich auf Stories mit außergewöhnlicher 
-        narrativer Kraft - dramatische Entwicklungen, überzeugende Kontraste und versteckte 
-        Verbindungen, die über die täglichen Nachrichten hinausragen.</em>
+        <em>💡 Die vollständige Analyse identifiziert Stories mit maximaler emotionaler Resonanz - 
+        Einzelschicksale, Kuriositäten, menschliches Drama und visuelle Geschichten, die Leser 
+        zum Klicken und Teilen bewegen.</em>
     </p>
     
     <hr style="border: none; border-top: 1px solid #ddd; margin: 30px 0;">
     
     <p style="color: #666; font-size: 12px;">
-        Diese Analyse wurde automatisch mit KI erstellt, um Stories mit tieferen narrativen 
-        Schichten und menschlichen Dramen zu identifizieren.
+        Diese Analyse wurde automatisch mit Claude AI erstellt, der als Senior Story Editor 
+        für 20min.ch agiert und Stories mit maximaler emotionaler Wirkung identifiziert.
     </p>
 </div>
