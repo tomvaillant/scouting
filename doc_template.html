@@ -1,0 +1,43 @@
+<h1>20MIN.CH TÄGLICHE NEWS-ANALYSE</h1>
+<h2>{{ date_formatted }}</h2>
+
+<h3>ANALYSE-ZUSAMMENFASSUNG</h3>
+<p>
+<strong>Erstellt:</strong> {{ datetime_full }}<br>
+<strong>Analysierte Artikel:</strong> {{ stats.total_articles }}<br>
+<strong>Nachrichtenquellen:</strong> {{ stats.total_sources }}<br>
+<strong>Kontinente abgedeckt:</strong> {{ stats.continents }}
+</p>
+
+<hr>
+
+{% for section in sections %}
+<h2>{{ section.title }}</h2>
+
+{% for story in section.stories %}
+<p><strong>{{ story.number }} {{ story.source }}:</strong> {{ story.title }}</p>
+{% for detail in story.details %}
+<p style="margin-left: 20px;">• <strong>{{ detail.label }}:</strong>{{ detail.value }}</p>
+{% endfor %}
+{% endfor %}
+{% endfor %}
+
+<hr>
+<h3>METHODIK</h3>
+<p>Diese Analyse wurde erstellt durch:</p>
+<p style="margin-left: 20px;">
+• Scannen von RSS-Feeds großer Nachrichtenportale aller Kontinente<br>
+• Sammeln der neuesten {{ stats.total_articles }} Artikel von {{ stats.total_sources }} Quellen<br>
+• Verwendung von Claude AI zur Identifikation narrativ starker Stories mit Tiefe<br>
+• Fokus auf: Dramatische Entwicklungen, überzeugende Kontraste, versteckte Verbindungen, menschliches Drama
+</p>
+
+<h3>QUELLENVERTEILUNG</h3>
+<p>
+{% for continent in continents %}
+<strong>{{ continent.name }}:</strong> {{ continent.count }} Artikel{% if not loop.last %} | {% endif %}
+{% endfor %}
+</p>
+
+<hr>
+<p><em>Automatisch generiert via GitHub Actions um {{ time_generated }}</em></p>

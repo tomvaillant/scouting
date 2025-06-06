@@ -1,0 +1,47 @@
+<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+    <h2 style="color: #d32f2f;">20min.ch Tägliche News-Analyse</h2>
+    
+    <p>Hallo Tom,</p>
+    
+    <p>Deine automatisierte News-Analyse für <strong>{{ date }}</strong> ist bereit.</p>
+    
+    <div style="background-color: #f5f5f5; padding: 15px; border-radius: 5px; margin: 20px 0;">
+        <h3 style="margin-top: 0;">Schnellübersicht:</h3>
+        <ul style="list-style-type: none; padding-left: 0;">
+            <li>📊 Analysierte Artikel: {{ stats.total_articles }}</li>
+            <li>📰 Nachrichtenquellen: {{ stats.total_sources }}</li>
+            <li>🌍 Kontinente abgedeckt: {{ stats.continents }}</li>
+            <li>⏰ Erstellt um: {{ time }}</li>
+        </ul>
+    </div>
+    
+    <div style="margin: 20px 0;">
+        <h3>Heutige Empfehlungen (mit narrativer Tiefe):</h3>
+        
+        {% for section in sections %}
+        <h4>{{ section.icon }} {{ section.title }}:</h4>
+        
+        {% for story in section.stories %}
+        <div style="margin: 15px 0; padding: 10px; background-color: #f9f9f9; border-radius: 5px;">
+            <strong>{{ story.source }}</strong>: {{ story.title }}
+            {% for detail in story.details %}
+            <br><span style="color: #666; font-size: 14px;">• <strong>{{ detail.label }}:</strong>{{ detail.value }}</span>
+            {% endfor %}
+        </div>
+        {% endfor %}
+        {% endfor %}
+    </div>
+    
+    <p style="margin-top: 30px;">
+        <em>💡 Die vollständige Analyse konzentriert sich auf Stories mit außergewöhnlicher 
+        narrativer Kraft - dramatische Entwicklungen, überzeugende Kontraste und versteckte 
+        Verbindungen, die über die täglichen Nachrichten hinausragen.</em>
+    </p>
+    
+    <hr style="border: none; border-top: 1px solid #ddd; margin: 30px 0;">
+    
+    <p style="color: #666; font-size: 12px;">
+        Diese Analyse wurde automatisch mit KI erstellt, um Stories mit tieferen narrativen 
+        Schichten und menschlichen Dramen zu identifizieren.
+    </p>
+</div>

@@ -1,0 +1,46 @@
+continent,name,url
+North America,BBC News Americas,https://feeds.bbci.co.uk/news/world/us_and_canada/rss.xml
+North America,NPR News,https://feeds.npr.org/1001/rss.xml
+North America,The New York Times,https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml
+North America,CBC News Canada,https://rss.cbc.ca/lineup/topstories.xml
+North America,The Guardian US,https://www.theguardian.com/us-news/rss
+North America,Mexico News Daily,https://mexiconewsdaily.com/feed/
+Europe,BBC News Europe,https://feeds.bbci.co.uk/news/world/europe/rss.xml
+Europe,The Guardian UK,https://www.theguardian.com/uk/rss
+Europe,Deutsche Welle English,https://rss.dw.com/rdf/rss-en-all
+Europe,France24 English,https://www.france24.com/en/rss
+Europe,Euronews,https://www.euronews.com/rss?format=mrss&level=theme&name=news
+Europe,POLITICO Europe,https://www.politico.eu/feed/
+Europe,Swiss Info,https://www.srf.ch/news/bnf/rss/19032223
+Europe,Blick,https://www.blick.ch/news/rss.xml
+Asia,Al Jazeera,https://www.aljazeera.com/xml/rss/all.xml
+Asia,The Japan Times,https://www.japantimes.co.jp/feed/
+Asia,South China Morning Post,https://www.scmp.com/rss/91/feed
+Asia,The Hindu India,https://www.thehindu.com/news/national/feeder/default.rss
+Asia,Times of India,https://timesofindia.indiatimes.com/rssfeedstopstories.cms
+Africa,BBC News Africa,https://feeds.bbci.co.uk/news/world/africa/rss.xml
+Africa,AllAfrica,https://allafrica.com/tools/headlines/rdf/latest/headlines.rdf
+Africa,Mail & Guardian SA,https://mg.co.za/feed/
+Africa,News24 South Africa,https://feeds.news24.com/articles/news24/TopStories/rss
+Africa,Morocco World News,https://www.moroccoworldnews.com/feed/
+South America,BBC News Latin America,https://feeds.bbci.co.uk/news/world/latin_america/rss.xml
+South America,Buenos Aires Times,https://www.batimes.com.ar/feed
+South America,MercoPress,https://en.mercopress.com/rss/
+South America,Colombia Reports,https://colombiareports.com/feed/
+Oceania,ABC News Australia,https://www.abc.net.au/news/feed/2942460/rss.xml
+Oceania,Sydney Morning Herald,https://www.smh.com.au/rss/feed.xml
+Oceania,The Guardian Australia,https://www.theguardian.com/australia-news/rss
+Oceania,Stuff.co.nz,https://www.stuff.co.nz/rss
+Oceania,Radio New Zealand,https://www.rnz.co.nz/rss/national.xml
+Europe,Spiegel Online,https://www.spiegel.de/schlagzeilen/index.rss
+Europe,Die Zeit,https://newsfeed.zeit.de/index
+Europe,Süddeutsche Zeitung,https://rss.sueddeutsche.de/rss/Topthemen
+Europe,Frankfurter Allgemeine,https://www.faz.net/rss/aktuell/
+Europe,Bild,https://www.bild.de/feed/alles.xml
+Europe,Blick,https://www.blick.ch/schweiz/rss.xml
+Europe,Tagesschau,https://www.tagesschau.de/xml/rss2/
+Europe,Neue Zürcher Zeitung,https://www.nzz.ch/recent.rss
+Europe,Tages-Anzeiger,https://www.tagesanzeiger.ch/rss.html
+Europe,Der Standard AT,https://www.derstandard.at/rss
+Europe,Kurier,https://kurier.at/xml/rss
+Europe,ORF News,https://rss.orf.at/news.xml
